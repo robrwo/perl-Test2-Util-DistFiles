@@ -1,5 +1,7 @@
 package Test2::Util::DistFiles;
 
+# ABSTRACT: gather files in a distribution
+
 use v5.14;
 use warnings;
 
@@ -13,6 +15,18 @@ use IO::File;
 use Ref::Util qw( is_plain_hashref );
 
 our @EXPORT_OK = qw( manifest_files is_perl_file );
+
+=head1 SYNOPSIS
+
+    use Test2::V0;
+    use Test2::Util::DistFiles qw( manifest_files is_perl_file );
+
+    my @perl = manifest_files( \&is_perl_file);
+
+=head1 DESCRIPTION
+
+This is a utility module that gathers lists files in a distribution, intended for author, or release tests for
+developers.
 
 =export manifest_files
 
@@ -95,5 +109,11 @@ sub is_perl_file {
     return 1 if $first && ( $first =~ /^#!.*perl\b/ || $first =~ /--[*]-Perl-[*]--/ );
     return;
 }
+
+=head1 SEE ALSO
+
+L<Test::XTFiles>
+
+=cut
 
 1;
