@@ -14,6 +14,8 @@ use File::Spec;
 use IO::File;
 use Ref::Util qw( is_plain_hashref );
 
+# RECOMMEND PREREQ: Ref::Util::XS
+
 our @EXPORT_OK = qw( manifest_files is_perl_file );
 
 our $VERSION = 'v0.1.0';
