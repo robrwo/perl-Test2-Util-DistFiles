@@ -4,7 +4,7 @@ Test2::Util::DistFiles - gather files in a distribution
 
 # VERSION
 
-version v0.1.0
+version v0.1.1
 
 # SYNOPSIS
 
