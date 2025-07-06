@@ -14,6 +14,19 @@ use Ref::Util qw( is_plain_hashref );
 
 our @EXPORT_OK = qw( manifest_files is_perl_file );
 
+=export manifest_files
+
+    my @files = manifest_files();
+
+    my @perl  = manifest_files( \&is_perl_file );
+
+This returns a list of files from the F<MANIFEST>, filtered by an optional function.
+
+If there is no manifest, then it will use L<ExtUtils::Manifest> to build a list of files that would be added to the
+manifest.
+
+=cut
+
 sub manifest_files {
 
     my $options = {};
@@ -61,6 +74,15 @@ sub manifest_files {
     my @files = grep { !$skip->($_) && $filter->($_) } sort keys %{$found};
     return File::Spec->no_upwards(@files);
 }
+
+=export is_perl_file
+
+This returns a list of Perl files in the distribution, excluding installation scaffolding like L<Module::Install> files
+in F<inc>.
+
+Note that it will include files like F<Makefile.PL> or F<Build.PL>.
+
+=cut
 
 sub is_perl_file {
     my ($file) = @_;
