@@ -1,6 +1,6 @@
 # NAME
 
-Test2::Util::DistFiles - gather files in a distribution
+Test2::Util::DistFiles - Gather a list of files in a distribution
 
 # VERSION
 

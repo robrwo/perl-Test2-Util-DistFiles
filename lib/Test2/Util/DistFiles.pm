@@ -1,6 +1,6 @@
 package Test2::Util::DistFiles;
 
-# ABSTRACT: gather files in a distribution
+# ABSTRACT: Gather a list of files in a distribution
 
 use v5.14;
 use warnings;
