@@ -50,7 +50,9 @@ sub manifest_files {
     my $options = {};
     $options = shift if is_plain_hashref( $_[0] );
 
-    my $filter = shift;
+    state $nop = sub { 1 };
+
+    my $filter = shift || $nop;
 
     my $cwd;
     if ( my $dir = $options->{dir} ) {
@@ -58,7 +60,10 @@ sub manifest_files {
         chdir($dir) or croak "Cannot chdir to ${dir}";
     }
 
-    my $default = sub {
+    $options->{use_default} //= 1;
+
+    my $default = $options->{use_default}
+      ? sub {
         my ($file) = @_;
         my $name = basename($file);
         return
@@ -71,9 +76,8 @@ sub manifest_files {
           || $name =~ m{\.(?:old|bak|backup)$}i
           || $file eq "Build";
         return 1;
-    };
-
-    $filter //= $default;
+      }
+      : $nop;
 
     my $found;
 
@@ -89,7 +93,7 @@ sub manifest_files {
 
     chdir($cwd) if defined $cwd;
 
-    my @files = grep { !$skip->($_) && $filter->($_) } sort keys %{$found};
+    my @files = grep { !$skip->($_) && $default->($_) && $filter->($_) } sort keys %{$found};
     return File::Spec->no_upwards(@files);
 }
 

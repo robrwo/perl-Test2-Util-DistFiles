@@ -1,6 +1,12 @@
 Revision history for {{ $dist->name }}:
 
 {{$NEXT}}
+  [Enhancements]
+  - Added use_default option.
+
+  [Bug Fixes]
+  - Using a filter does not override the default, GH#1.
+
   [Other]
   - Fixed metadata.
 
