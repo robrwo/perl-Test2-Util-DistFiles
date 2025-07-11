@@ -109,7 +109,7 @@ Note that it will include files like F<Makefile.PL> or F<Build.PL>.
 sub is_perl_file {
     my ($file) = @_;
     my $name = basename($file);
-    return   if $file =~ m{^inc/};                   # Module::Install
+    return   if $file =~ m{^(inc|local)/};
     return 1 if $name =~ /\.(?:PL|p[lm]|psgi|t)$/;
     return   if $name =~ /\.\w+$/ && $name !~ /\.bat$/;
     my $fh    = IO::File->new( $file, "r" ) or return;

@@ -7,6 +7,8 @@ Revision history for {{ $dist->name }}:
   [Bug Fixes]
   - Using a filter does not override the default, GH#1.
 
+  - The is_perl_file function will ignore files in Carton local-lib.
+
   [Other]
   - Fixed metadata.
 
