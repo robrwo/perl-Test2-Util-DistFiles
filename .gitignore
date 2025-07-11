@@ -1,2 +1,4 @@
 Test2-Util-DistFiles*
 Test2-Util-DistFiles*/
+\.build/
+local/
