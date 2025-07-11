@@ -34,7 +34,9 @@ developers.
 
 =export manifest_files
 
-    my @files = manifest_files();
+    my @files = manifest_files(); # use default filter
+
+    my @files = manifest_files( \%options, \&filter );
 
     my @perl  = manifest_files( \&is_perl_file );
 
@@ -42,6 +44,24 @@ This returns a list of files from the F<MANIFEST>, filtered by an optional funct
 
 If there is no manifest, then it will use L<ExtUtils::Manifest> to build a list of files that would be added to the
 manifest.
+
+The following options are supported:
+
+=for stopwords dir
+
+=over
+
+=item dir
+
+Search for files in this directory.
+
+=item use_default
+
+Use the default filter to ignore local lib files, build files, version control files and temporary files.
+
+This is true by default.
+
+=back
 
 =cut
 

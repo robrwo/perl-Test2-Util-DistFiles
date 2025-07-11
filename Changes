@@ -9,6 +9,9 @@ Revision history for {{ $dist->name }}:
 
   - The is_perl_file function will ignore files in Carton local-lib.
 
+  [Documentation]
+  - Documented options.
+
   [Other]
   - Fixed metadata.
 
