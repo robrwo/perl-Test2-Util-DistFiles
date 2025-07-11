@@ -18,7 +18,7 @@ use Ref::Util qw( is_plain_hashref );
 
 our @EXPORT_OK = qw( manifest_files is_perl_file );
 
-our $VERSION = 'v0.1.2';
+our $VERSION = 'v0.2.0';
 
 =head1 SYNOPSIS
 
