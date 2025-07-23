@@ -6,7 +6,7 @@ use v5.14;
 use warnings;
 
 use Carp                    qw( croak );
-use Cwd                     qw( cwd chdir );
+use Cwd::Guard              qw( cwd_guard );
 use Exporter 5.57           qw( import );
 use ExtUtils::Manifest 1.68 qw( manifind maniread maniskip );
 use File::Basename          qw( basename );
@@ -74,10 +74,9 @@ sub manifest_files {
 
     my $filter = shift || $nop;
 
-    my $cwd;
+    my $guard;
     if ( my $dir = $options->{dir} ) {
-        $cwd = cwd();
-        chdir($dir) or croak "Cannot chdir to ${dir}";
+        $guard = cwd_guard($dir) or croak "Cannot chdir to ${dir}: $Cwd::Guard::Error";
     }
 
     $options->{use_default} //= 1;
@@ -111,7 +110,7 @@ sub manifest_files {
 
     my $skip = maniskip;
 
-    chdir($cwd) if defined $cwd;
+    $guard = undef;
 
     my @files = grep { !$skip->($_) && $default->($_) && $filter->($_) } sort keys %{$found};
     return File::Spec->no_upwards(@files);
