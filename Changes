@@ -7,6 +7,8 @@ Revision history for {{ $dist->name }}:
   [Documentation]
   - Added a SUPPORT section and merged BUGS into it.
 
+  - Adjust wording for consistency.
+
 v0.2.0    2025-07-11 21:25:31+01:00 Europe/London
   [Enhancements]
   - Added use_default option.
