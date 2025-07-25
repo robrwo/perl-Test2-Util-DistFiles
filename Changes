@@ -9,6 +9,9 @@ Revision history for {{ $dist->name }}:
 
   - Adjust wording for consistency.
 
+  [Tests]
+  - Fixed author Perl::Critic test.
+
   [Other]
   - Improved Dist::Zilla configuration.
 
