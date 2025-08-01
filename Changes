@@ -1,6 +1,9 @@
 Revision history for {{ $dist->name }}:
 
 {{$NEXT}}
+  [Documentation]
+  - README is generated using Dist::Zilla::Plugin::UsefulReadme.
+
   [Toolchain]
   - Improve Dist::Zilla configuration.
 
